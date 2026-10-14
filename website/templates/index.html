@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lex or Dash</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<main>
+    <div style="display:flex; justify-content:center; text-align:center;">
+        <h1 style="color:royalblue;">Lex-or</h1>
+        <h1 style="color:rgb(255,48,48);">-DASH</h1>
+    </div>
+
+    <div class="container">
+        <h3>What's For ...?</h3>
+
+        <form action="/menu" method="POST" id="meal-form">
+            <div class="card">
+                <button type="submit" name="meal" value="breakfast">
+                    Breakfast
+                </button>
+                <button type="submit" name="meal" value="lunch">
+                    Lunch
+                </button>
+                <button type="submit" name="meal" value="dinner">
+                    Dinner
+                </button>
+            </div>
+
+            <section class="preferences">
+                <h2>Your Food Preferences</h2>
+                <p>Help Lex or Dash find meals you'll enjoy.</p>
+
+                <div class="preference-dropdown">
+                    <button type="button" class="preference-toggle"
+                            aria-expanded="false"
+                            aria-controls="likes-panel">
+                        <span>♥ Foods I Like</span>
+                        <span class="chevron">⌄</span>
+                    </button>
+
+                    <div class="preference-panel" id="likes-panel" hidden>
+                        <textarea name="likes" id="likes-input" rows="3"
+                            placeholder="I like chicken, steak, Mexican food..."></textarea>
+                        <p class="input-hint">
+                            Describe foods, cuisines, flavors, or textures you enjoy.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="preference-dropdown">
+                    <button type="button" class="preference-toggle"
+                            aria-expanded="false"
+                            aria-controls="dislikes-panel">
+                        <span>Foods I Dislike</span>
+                        <span class="chevron">⌄</span>
+                    </button>
+
+                    <div class="preference-panel" id="dislikes-panel" hidden>
+                        <textarea name="dislikes" id="dislikes-input" rows="3"
+                            placeholder="I dislike BBQ, pork, spaghetti..."></textarea>
+                        <p class="input-hint">
+                            Describe anything you would prefer not to eat.
+                        </p>
+                    </div>
+                </div>
+
+                <button type="button" id="save-preferences">
+                    Save Preferences
+                </button>
+                <p id="preferences-status" role="status" aria-live="polite"></p>
+            </section>
+        </form>
+    </div>
+</main>
+
+<script>
+    // Expand and collapse the preference dropdowns.
+    document.querySelectorAll(".preference-toggle").forEach(button => {
+        button.addEventListener("click", () => {
+            const panel = document.getElementById(
+                button.getAttribute("aria-controls")
+            );
+            const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+            button.setAttribute("aria-expanded", String(!isExpanded));
+            panel.hidden = isExpanded;
+        });
+    });
+
+    const likesInput = document.getElementById("likes-input");
+    const dislikesInput = document.getElementById("dislikes-input");
+    const status = document.getElementById("preferences-status");
+
+    // Load preferences saved in this browser.
+    likesInput.value = localStorage.getItem("lex-or-dash-likes") || "";
+    dislikesInput.value = localStorage.getItem("lex-or-dash-dislikes") || "";
+
+    // Save preferences locally.
+    document.getElementById("save-preferences").addEventListener("click", () => {
+        localStorage.setItem("lex-or-dash-likes", likesInput.value);
+        localStorage.setItem("lex-or-dash-dislikes", dislikesInput.value);
+        status.textContent = "Preferences saved in this browser!";
+    });
+</script>
+</body>
+</html>

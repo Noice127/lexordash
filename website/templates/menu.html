@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LEX or DASH</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css')}}" />
+    <!--<link rel="icon" href="./favicon.ico" type="image/x-icon">-->
+  </head>
+  <body>
+    <main>
+        <div style="display: flex; text-align: center; justify-content: center;">
+            <h1 style="color: royalblue;">Lex-or</h1>
+            <h1 style="color:rgb(255, 48, 48);">-DASH</h1>  
+        </div> 
+        <a href="/">Back to Home</a>
+
+        <div style="display: flex; justify-content: center; text-align: center;">
+            <div class="container">
+            <h3 style="color: rgb(38, 38, 248);">Menu for {{ selected_meal }}</h3>
+            {% if menu_items %}
+                <div class="card" style="text-align: left;">
+                    <ul>
+                        {% for food in menu_items %}
+                            <li style="padding:2px;">{{ food }}</li>
+
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                        <p>No menu items found.</p>
+                    {% endif %}
+                </div>
+
+            </div>
+
+
+
+
+            <div class="container">
+            <h3 style="color: rgb(255, 48, 48);">AI Recommendation</h3>
+            <h4>Here is what AI recommends: </h4>
+                <div class="card">
+                    <p style="white-space:pre-line;">{{ recommend }}</p>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+    
+  </body>
+</html>
+
+
+

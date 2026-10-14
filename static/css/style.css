@@ -1,0 +1,185 @@
+html {
+    background: #f5f6fa;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    color: #202124;
+    text-align: center;
+}
+
+
+/* Main app container */
+.container {
+    background: #ffffff;
+    padding: 22px;
+    border-radius: 24px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Menu and recommendation cards */
+.card {
+    background: #ffffff;
+    border: 1px solid #e9eaf0;
+    border-radius: 18px;
+    padding: 16px;
+    margin-bottom: 14px;
+}
+
+/* Buttons */
+button {
+    background-color: cornflowerblue;
+    color:aliceblue; 
+    border: none;
+    border-radius: 999px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease,
+                background-color 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 3 4px 12px rgba(0, 0, 0, 0.12);
+    background-color: rgb(38, 38, 248);
+
+}
+
+/* Text inputs */
+input,
+select,
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #dedfe6;
+    border-radius: 14px;
+    padding: 12px 14px;
+    font-size: 14px;
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #7c83fd;
+    box-shadow: 0 0 0 3px rgba(124, 131, 253, 0.15);
+}
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+ul li::before {
+    content: "★"; /* Unicode star */
+    color: rgb(38, 38, 248);  /* Star color */
+    font-size: 1.2em; /* Size of star */
+    margin-right: 8px; /* Space between star and text */
+}
+
+
+/* Food preferences */
+.preferences {
+    margin-top: 24px;
+    padding: 24px;
+    background: #ffffff;
+    border-radius: 20px;
+    text-align: left;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.preferences h2 {
+    margin: 0 0 8px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.preferences > p {
+    color: #6b7280;
+    text-align: center;
+    font-size: 14px;
+}
+
+.preference-dropdown {
+    margin-top: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.preference-toggle {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    background: #ffffff;
+    color: #202124;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+}
+
+.preference-toggle:hover {
+    background: #f6f8ff;
+}
+
+.chevron {
+    color: #527fe8;
+    font-size: 20px;
+}
+
+.preference-panel {
+    padding: 0 14px 14px;
+}
+
+.preference-panel label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #555;
+}
+
+.preference-panel textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font: inherit;
+    font-size: 14px;
+    resize: vertical;
+}
+
+.preference-panel textarea:focus {
+    outline: 2px solid #638ff0;
+    outline-offset: 1px;
+}
+
+#save-preferences {
+    width: 100%;
+    margin-top: 16px;
+    padding: 13px;
+    border: none;
+    border-radius: 999px;
+    background: #638ff0;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#save-preferences:hover {
+    background:  rgb(38, 38, 248);
+}
+
+#preferences-status {
+    min-height: 18px;
+    font-size: 13px;
+    color: #287447;
+}
